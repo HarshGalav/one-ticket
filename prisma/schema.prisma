@@ -15,20 +15,58 @@ datasource db {
 }
 
 model User {
-  id           String  @id @unique
+  id           String    @id @unique
   email        String
   firstName    String
   lastName     String
   profileImage String
-  customerId   String? @unique
+  customerId   String?   @unique
+  phone_number String?
+  registered_date DateTime @default(now())
+  tickets      Ticket[]  // Add this line
+  createdAt    DateTime  @default(now())
 
-  createdAt DateTime @default(now())
-
-  Site  Site[]
-  posts Post[]
-
+  Site         Site[]
+  posts        Post[]
   Subscription Subscription?
 }
+
+model Ticket {
+  ticket_id   Int          @id @default(autoincrement())
+  user        User         @relation(fields: [userId], references: [id]) // Change this line
+  userId      String       // Change this line
+  event       EventAndShow @relation(fields: [event_id], references: [event_id])
+  event_id    Int
+  ticket_type TicketType
+  ticket_date DateTime     @default(now())
+  visit_date  DateTime
+  quantity    Int
+}
+
+model EventAndShow {
+  event_id    Int       @id @default(autoincrement())
+  event_name  String
+  description String?
+  event_type  EventType
+  start_date  DateTime
+  end_date    DateTime
+  location    String
+  price       Float
+  capacity    Int
+  tickets     Ticket[] // Relation with Ticket
+}
+
+enum TicketType {
+  GeneralEntry
+  Exhibition
+  Show
+}
+
+enum EventType {
+  Exhibition
+  Show
+}
+
 
 model Site {
   id           String   @id @default(uuid())
