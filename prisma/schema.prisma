@@ -29,8 +29,6 @@ model User {
 
   Subscription Subscription?
 }
-
-
 model Subscription {
   stripeSubscriptionId String   @id @unique
   interval             String
