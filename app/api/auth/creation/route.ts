@@ -35,7 +35,7 @@ export async function GET() {
 
     return NextResponse.redirect(
       process.env.NODE_ENV === "production"
-        ? "https://oneticket.vercel.app/dasboard"
+        ? "https://oneticket.vercel.app/dashboard"
         : "http://localhost:3000/dashboard"
     );
   } catch (error) {
