@@ -24,9 +24,6 @@ model User {
 
   createdAt DateTime @default(now())
 
-  Site  Site[]
-  posts Post[]
-
   Subscription Subscription?
 }
 model Subscription {
