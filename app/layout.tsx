@@ -28,7 +28,7 @@ export default function RootLayout({
       <body className={`${geistSans.className} ${geistMono.className}`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
