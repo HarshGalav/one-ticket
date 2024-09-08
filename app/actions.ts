@@ -16,7 +16,7 @@ export async function CreateSiteAction(prevState: any, formData: FormData) {
         userId: user.id,
       },
       select: {
-        status:true,
+        status: true,
       },
     }),
     prisma.site.findMany({
