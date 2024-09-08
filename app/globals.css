@@ -68,3 +68,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .bg-parchment {
+    background-color: #f4e6cc;
+  }
+  .text-sepia {
+    color: #704214;
+  }
+  .bg-brown-700 {
+    background-color: #5d4037;
+  }
+  .bg-brown-600:hover {
+    background-color: #795548;
+  }
+}
