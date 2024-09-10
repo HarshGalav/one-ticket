@@ -12,13 +12,85 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { MapPinIcon } from "@heroicons/react/24/solid";
-
+import React from "react";
+import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 interface Exhibition {
   id: number;
   title: string;
   aim: string;
   description: string;
   image: string;
+}
+
+const data = [
+  {
+    category: "Museum",
+    title: "Indian Culture Exhibition Museum",
+    src: "https://github.com/user-attachments/assets/79709db4-bf5f-425f-922d-8b069237bfa2",
+    content: <DummyContent />,
+  },
+  {
+    category: "Monument",
+    title: "Jantar Mantar, Jaipur",
+    src: "https://github.com/user-attachments/assets/dd644d1e-2238-43fd-80a0-1ea51b01dcad",
+    content: <DummyContent />,
+  },
+  {
+    category: "Museum",
+    title: "Mineral Collection Museum",
+    src: "https://github.com/user-attachments/assets/dbceaa6b-a622-4662-930c-28e8aeb74acd",
+    content: <DummyContent />,
+  },
+  {
+    category: "Monument",
+    title: "Taj Mahal",
+    src: "https://github.com/user-attachments/assets/02c44034-d354-40b7-a803-983e0ccd9bc6",
+    content: <DummyContent />,
+  },
+  {
+    category: "Monument",
+    title: "Indiam Museum, Kolkata",
+    src: "https://github.com/user-attachments/assets/e27463f4-e555-49e2-8a66-8e297c5f7168",
+    content: <DummyContent />,
+  },
+  {
+    category: "Hiring",
+    title: "Hiring for a Staff Software Engineer",
+    src: "https://github.com/user-attachments/assets/b52340e1-affd-47d6-abfc-2ab1619b3693",
+    content: <DummyContent />,
+  },
+];
+
+function DummyContent() {
+  return (
+    <>
+      {[...new Array(3).fill(1)].map((_, index) => {
+        return (
+          <div
+            key={"dummy-content" + index}
+            className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4"
+          >
+            <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
+              <span className="font-bold text-neutral-700 dark:text-neutral-200">
+                The first rule of Apple club is that you boast about Apple club.
+              </span>{" "}
+              Keep a journal, quickly jot down a grocery list, and take amazing
+              class notes. Want to convert those notes to text? No problem.
+              Langotiya jeetu ka mara hua yaar is ready to capture every
+              thought.
+            </p>
+            <Image
+              src="https://assets.aceternity.com/macbook.png"
+              alt="Macbook mockup from Aceternity UI"
+              height="500"
+              width="500"
+              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
+            />
+          </div>
+        );
+      })}
+    </>
+  );
 }
 
 export default function Features() {
@@ -56,10 +128,13 @@ export default function Features() {
   const closeExhibitionDialog = () => {
     setSelectedExhibition(null);
   };
+  const cards = data.map((card, index) => (
+    <Card key={card.src} card={card} index={index} />
+  ));
 
   return (
     <>
-      <div className="relative px-6 lg:px-8">
+      <div className="relative">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
@@ -72,8 +147,8 @@ export default function Features() {
             }}
           />
         </div>
-        <div className="mx-auto max-w-2xl pb-32 pt-24 lg:pt-20 lg:pb-28">
-          <div className="text-center">
+        <div className="">
+          {/* <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
               Museum tickets, simplified.
             </h1>
@@ -109,7 +184,13 @@ export default function Features() {
                 </DialogContent>
               </Dialog>
             </div>
+          </div> */}
+          <div className="">
+          <div className="w-full h-full">
+            
+            <Carousel items={cards} />
           </div>
+        </div>
         </div>
         <div
           className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
